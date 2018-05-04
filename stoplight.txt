@@ -1,0 +1,46 @@
+/*Lesson 4 - button stoplight*/
+
+int yellowLED = 9;
+int redLED = 10;
+int greenLED = 11;
+int button = A0;
+
+int val;
+int oldVal;
+int counter = 0;
+
+void setup() {
+  pinMode(redLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(button, INPUT);
+}
+
+void loop() {
+  val = digitalRead(button);            //Read the value from the button
+  if(val == HIGH && oldVal == LOW) {
+    ++counter;
+  }
+
+  oldVal = val;
+  delay(10);
+
+  if(counter == 1) {                    //When counter is 1, do first pattern
+    digitalWrite(yellowLED, HIGH);
+    digitalWrite(redLED, LOW);
+    digitalWrite(greenLED, LOW);
+  } 
+  else if(counter == 2) {               //When counter is 2, do second pattern
+    digitalWrite(yellowLED, LOW);
+    digitalWrite(redLED, HIGH);
+    digitalWrite(greenLED, LOW);
+  }
+  else if(counter == 3) {               //When counter is 3, do third pattern
+    digitalWrite(yellowLED, LOW);
+    digitalWrite(redLED, LOW);
+    digitalWrite(greenLED, HIGH);
+
+    counter = 0;                        //Reset counter
+  }
+
+}

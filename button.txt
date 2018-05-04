@@ -1,0 +1,23 @@
+/*Lesson 4 - Button*/
+
+int redLED = 10;        //LED pin number
+int button = 9;         //Button pin number
+
+int buttonState = 0;    //Initial state of the button
+
+void setup() {
+  pinMode(redLED, OUTPUT);
+  pinMode(button, INPUT);
+}
+
+void loop() {
+  buttonState = digitalRead(button);    //Read the value from the button
+
+  if (buttonState == HIGH) {
+    digitalWrite(redLED, HIGH);    
+  }
+  else {
+    digitalWrite(redLED, LOW);      
+  }
+
+}
